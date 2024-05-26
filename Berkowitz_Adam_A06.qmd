@@ -102,7 +102,10 @@ Extract the value `8162` (LeBron James points) in 2 different ways:
 - using names
 
 ```{r}
-
+player_info[[2]][[4]]
+```
+```{r}
+player_info$LJ$points
 ```
 
 
@@ -113,7 +116,40 @@ Add a new named element to the end of each player's list called `height`. The he
 Print the `player_info` list to prove you were successful.
 
 ```{r}
+player_info <- list(MJ = list(name = "Michael Jordan",
+                              postion = "shooting guard",
+                              games_played = 179,
+                              points = 5987,
+                              assists = 1022),
+                    LJ = list(name = "LeBron James",
+                              postion = "small forward",
+                              games_played = 287,
+                              points = 8162,
+                              assists = 2067),
+                    KB = list(name = "Kobe Bryant",
+                              postion = "shooting guard",
+                              games_played = 220,
+                              points = 5640,
+                              assists = 1040),
+                    KA = list(name = "Kareem Abdul-Jabbar",
+                              postion = "center",
+                              games_played = 237,
+                              points = 5762,
+                              assists = 767),
+                    SO = list(name = "Shaquille O'Neal",
+                              postion = "center",
+                              games_played = 216,
+                              points = 5250,
+                              assists = 582))
 
+
+player_info$MJ$height <- 78
+player_info$LJ$height <- 81
+player_info$KB$height <- 78
+player_info$KA$height <- 86
+player_info$SO$height <- 85
+
+player_info
 ```
 
 
@@ -132,7 +168,13 @@ Hint: initialize an empty list
 Note: this must still run correctly even if the values were to change or if another player were added to the list or if the player order changed.
 
 ```{r}
+points_per_game <- list()
 
+for (i in names(player_info)) {
+  points_per_game[[i]] <- player_info[[i]][[4]] / player_info[[i]][[3]]
+}
+
+print(points_per_game)
 ```
 
 
@@ -143,7 +185,8 @@ Use the list created in Part c and an appropriate apply function to round each v
 Store the output as a vector and print the results.
 
 ```{r}
-
+ppg <- as.vector(round(as.numeric(unlist(points_per_game)), digits = 2))
+ppg
 ```
 
 
