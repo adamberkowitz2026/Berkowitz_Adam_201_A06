@@ -292,7 +292,7 @@ median(unlist(CO_just_temps))
 ```
 ```{r}
 median_temp <- apply(just_temps, 1, median)
-print(paste0("The maximum median annual temperature of ", which.max(median_temp), " occurred in ", max_temps$year[], " and the minimum median annual temperature of ". {}, " occurred in ", {}, "."))
+print(paste0("The maximum median annual temperature of ", median_temp[which.max(median_temp)], " occurred in ", max_temps$year[which.max(median_temp)], " and the minimum median annual temperature of ", median_temp[which.min(median_temp)], " occurred in ", max_temps$year[which.min(median_temp)], "."))
 ```
 
 
@@ -305,6 +305,14 @@ Example: The number 312 would return 6 (3 + 1 + 2)
 Run your function with 935068.
 
 ```{r}
+dig_sum <- function(n) {
+  if (n == 0) {
+    return (0)
+  } else {
+    return (n %% 10 + dig_sum(n %/% 10))
+  }
+} 
 
+dig_sum(935058)
 ```
 
