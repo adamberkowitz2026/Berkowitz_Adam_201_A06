@@ -298,14 +298,6 @@ Example: The number 312 would return 6 (3 + 1 + 2)
 Run your function with 935068.
 
 ```{r}
-dig_sum <- function(n) {
-  if (n == 0) {
-    return (0)
-  } else {
-    return (n %% 10 + dig_sum(n %/% 10))
-  }
-} 
 
-dig_sum(935058)
 ```
 
